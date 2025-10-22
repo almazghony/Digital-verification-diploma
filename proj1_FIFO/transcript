@@ -1,0 +1,90 @@
+do run.do
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is almaz@DESKTOP-H047PU4.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is almaz@DESKTOP-H047PU4.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is almaz@DESKTOP-H047PU4.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vlog 2021.1 Compiler 2021.01 Jan 19 2021
+# Start time: 23:21:55 on Oct 13,2025
+# vlog -reportprogress 300 "+define+SIM" -f src_files.list "+cover" -covercells 
+# -- Compiling package shared_pkg
+# -- Compiling package transaction_pkg
+# -- Compiling package coverage_pkg
+# -- Importing package transaction_pkg
+# -- Compiling package scoreboard_pkg
+# -- Importing package shared_pkg
+# -- Compiling module FIFO
+# -- Compiling package FIFO_monitor_sv_unit
+# -- Importing package coverage_pkg
+# -- Importing package scoreboard_pkg
+# -- Compiling module FIFO_monitor
+# -- Compiling package FIFO_tb_sv_unit
+# -- Compiling module FIFO_TB
+# -- Compiling module FIFO_top
+# -- Compiling interface FIFO_if
+# 
+# Top level modules:
+# 	FIFO_top
+# End time: 23:21:56 on Oct 13,2025, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.FIFO_top -coverage 
+# Start time: 23:21:56 on Oct 13,2025
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading sv_std.std
+# Loading work.FIFO_top(fast)
+# Loading work.FIFO_if(fast__1)
+# Loading work.FIFO(fast)
+# Loading work.shared_pkg(fast)
+# Loading work.transaction_pkg(fast)
+# Loading work.FIFO_tb_sv_unit(fast)
+# Loading work.FIFO_TB(fast)
+# Loading work.scoreboard_pkg(fast)
+# Loading work.coverage_pkg(fast)
+# Loading work.FIFO_monitor_sv_unit(fast)
+# Loading work.FIFO_monitor(fast)
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: almaz  Hostname: DESKTOP-H047PU4  ProcessID: 1472
+#           Attempting to use alternate WLF file "./wlft8by4gm".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft8by4gm
+# ** Warning: (vsim-8560) On evaluating the select expression of Cross bin 'c7.b2_full' in Covergroup instance '\/coverage_pkg::FIFO_coverage::FIFO_cvg ', the bin is found to be empty since no cross products are selected.
+#    Time: 0 ns  Iteration: 0  Instance: /FIFO_top/mon
+# ================DATA OUT===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================FULL===================
+# ==== Error count: 0 
+# ==== Correct count: 100002
+# ================ALMOST FULL===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================EMPTY===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================ALMOST EMPTY===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================OVERFLOW===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================UNDERFLOW===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ================ACKNOWLEDGE===================
+# ==== Error count: 0
+# ==== Correct count: 100002
+# ** Note: $stop    : FIFO_monitor.sv(67)
+#    Time: 200004 ns  Iteration: 1  Instance: /FIFO_top/mon
+# Break in Module FIFO_monitor at FIFO_monitor.sv line 67
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/Digital verification/projects/proj1_FIFO/j.mpf).  File can not be renamed.
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/Digital verification/projects/proj1_FIFO/j.mpf).  File can not be renamed.
+# ** Error: Acs sdne.
+# 
+#        Unable to replace existing ini file (D:/Digital verification/projects/proj1_FIFO/j.mpf).  File can not be renamed.
+# Saving coverage database on exit...
+# End time: 23:23:23 on Oct 13,2025, Elapsed time: 0:01:27
+# Errors: 3, Warnings: 6

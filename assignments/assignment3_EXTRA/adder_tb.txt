@@ -1,0 +1,481 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /adder_tb/dut
+=== Design Unit: work.adder
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /adder_tb/dut
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 2_adder.v
+------------------------------------IF Branch------------------------------------
+    11                                       220     Count coming in to IF
+    11              1                         41           if (reset)
+    13              1                        179           else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       3         3         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /adder_tb/dut --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 2_adder.v
+    1                                                module adder (
+    2                                                    input  clk,
+    3                                                    input  reset,
+    4                                                    input  signed [3:0] A,	// Input data A in 2's complement
+    5                                                    input  signed [3:0] B,	// Input data B in 2's complement
+    6                                                    output reg signed [4:0] C // Adder output in 2's complement
+    7                                                		  );
+    8                                                
+    9                                                   // Register output C
+    10              1                        220        always @(posedge clk or posedge reset) begin
+    11                                                     if (reset)
+    12              1                         41     	     C <= 5'b0;
+    13                                                     else
+    14              1                        179     	     C <= A + B;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         30        30         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /adder_tb/dut --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            A[0-3]           1           1      100.00 
+                                            B[0-3]           1           1      100.00 
+                                            C[4-0]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                             reset           1           1      100.00 
+
+Total Node Count     =         15 
+Toggled Node Count   =         15 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (30 of 30 bins)
+
+=================================================================================
+=== Instance: /adder_tb
+=== Design Unit: work.adder_tb
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       1         1         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/adder_tb/#anonblk#179077330#33#4#/#ublk#179077330#33/immed__34
+                     2_adder_tb.sv(34)                  0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         6         5         1    83.33%
+
+================================Branch Details================================
+
+Branch Coverage for instance /adder_tb
+NOTE: The modification timestamp for source file '2_adder_tb.sv' has been altered since compilation.
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 2_adder_tb.sv
+------------------------------------IF Branch------------------------------------
+    52                                       201     Count coming in to IF
+    52              1                         21             if(rst) C_exp = 0;
+                                             180     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    54                                       201     Count coming in to IF
+    54              1                    ***0***                 if(C != C_exp) begin
+    58              1                        201                 else
+Branch totals: 1 hit of 2 branches = 50.00%
+
+------------------------------------IF Branch------------------------------------
+    63                                       201     Count coming in to IF
+    63              1                        180             if(!rst) begin
+                                              21     All False Count
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         0         1     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /adder_tb --
+NOTE: The modification timestamp for source file '2_adder_tb.sv' has been altered since compilation.
+
+  File 2_adder_tb.sv
+----------------Focused Condition View-------------------
+Line       54 Item    1  (C != C_exp)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+    Input Term   Covered  Reason for no coverage   Hint
+   -----------  --------  -----------------------  --------------
+  (C != C_exp)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (C != C_exp)_0        -                             
+  Row   2:    ***0***  (C != C_exp)_1        -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      29        27         2    93.10%
+
+================================Statement Details================================
+
+Statement Coverage for instance /adder_tb --
+NOTE: The modification timestamp for source file '2_adder_tb.sv' has been altered since compilation.
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 2_adder_tb.sv
+    3                                                module adder_tb();
+    4                                                    bit signed [3:0]   A;
+    5                                                    bit signed [3:0]   B;
+    6                                                    bit signed [4:0]   C;
+    7                                                    bit       clk;
+    8                                                    logic     rst;
+    9                                                
+    10                                                   integer error_count, correct_count;
+    11                                               
+    12                                                   localparam MAXPOS = 4'b0111;
+    13                                                   localparam MAXNEG = 4'b1000;
+    14                                               
+    15                                                   adder dut(clk, rst, A, B, C);
+    16                                               
+    17                                                   initial begin
+    18              1                          1             clk = 0;
+    19              1                          1             forever 
+    20              1                        403                 #1 clk = ~clk;
+    20              2                        402     
+    21                                                   end 
+    22                                               
+    23                                                   rand_input ri;
+    24                                               
+    25                                                   initial begin
+    26              1                          1             ri = new(clk);
+    27              1                          1             A = 0;
+    28              1                          1             B = 0;
+    29              1                          1             error_count = 0;
+    30              1                          1             correct_count = 0;
+    31              1                          1             assert_reset();
+    32                                               
+    33              1                          1             for (int i = 0; i < 200; i++) begin
+    33              2                        200     
+    34                                                           assert(ri.randomize());
+    35              1                        200                 A = ri.A;
+    36              1                        200                 B = ri.B;
+    37              1                        200                 rst = ri.rst;
+    38              1                        200                 check_result(A + B);
+    39                                                       end
+    40                                               
+    41              1                          1             $display("errors: %d, success: %d", error_count, correct_count);
+    42              1                          1             $stop;
+    43                                                   end
+    44                                               
+    45                                                   task assert_reset();
+    46              1                          1             rst = 1;
+    47              1                          1             check_result(0);
+    48              1                          1             rst = 0;
+    49                                                   endtask
+    50                                               
+    51                                                   task check_result(logic signed [4:0] C_exp);
+    52              1                         21             if(rst) C_exp = 0;
+    53              1                        201             @(negedge clk);
+    54                                                           if(C != C_exp) begin
+    55              1                    ***0***                     $display ("*** ERROR, A = %d, B = %d, C = %d", A, B, C, );
+    56              1                    ***0***                     error_count = error_count + 1;
+    57                                                           end
+    58                                                           else
+    59              1                        201                     correct_count = correct_count + 1;
+    60                                                   endtask
+    61                                               
+    62              1                        201         always @(posedge clk) begin
+    63                                                       if(!rst) begin
+    64              1                        180                 ri.cg_A.sample();
+    65              1                        180                 ri.cg_B.sample();
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        158        45       113    28.48%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /adder_tb --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            A[0-3]           1           1      100.00 
+                                            B[0-3]           1           1      100.00 
+                                            C[0-4]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                correct_count[0-6]           1           1      100.00 
+                                  correct_count[7]           0           1       50.00 
+                               correct_count[8-31]           0           0        0.00 
+                                 error_count[0-31]           0           0        0.00 
+                                               rst           1           1      100.00 
+
+Total Node Count     =         79 
+Toggled Node Count   =         22 
+Untoggled Node Count =         57 
+
+Toggle Coverage      =      28.48% (45 of 158 bins)
+
+=================================================================================
+=== Instance: /adder_pkg
+=== Design Unit: work.adder_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      2        na        na   100.00%
+        Coverpoints/Crosses          4        na        na        na
+            Covergroup Bins         12        12         0   100.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /adder_pkg/rand_input/cg_A                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint a1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint a2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/adder_pkg::rand_input::cg_A  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint a1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                           40          1          -    Covered              
+        bin maxpos                                         38          1          -    Covered              
+        bin maxneg                                         46          1          -    Covered              
+        default bin range                                  56                     -    Occurred             
+    Coverpoint a2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin data0_max                                      11          1          -    Covered              
+        bin data_max_min                                   14          1          -    Covered              
+        bin data_min_max                                   10          1          -    Covered              
+ TYPE /adder_pkg/rand_input/cg_B                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint b1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint b2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/adder_pkg::rand_input::cg_B  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint b1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                           50          1          -    Covered              
+        bin maxpos                                         25          1          -    Covered              
+        bin maxneg                                         32          1          -    Covered              
+        default bin range                                  73                     -    Occurred             
+    Coverpoint b2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin data0_max                                       7          1          -    Covered              
+        bin data_max_min                                    2          1          -    Covered              
+        bin data_min_max                                    5          1          -    Covered              
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       2         2         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /adder_pkg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 2_adder_pkg.sv
+    1                                                package adder_pkg;
+    2                                                    typedef enum {ZERO = 0, MAXPOS = 7, MAXNEG = -8} corner_e;
+    3                                                
+    4                                                    class rand_input;
+    5                                                        rand bit signed [3:0] A;
+    6                                                        rand bit signed [3:0] B;
+    7                                                        rand bit rst;
+    8                                                
+    9                                                        constraint c1 {
+    10                                                           rst dist {0 := 9, 1 := 1};
+    11                                               
+    12                                                           A dist {
+    13                                                               ZERO := 9,
+    14                                                               MAXPOS := 9,
+    15                                                               MAXNEG := 9,
+    16                                                               [MAXNEG:MAXPOS] := 1
+    17                                                           };
+    18                                               
+    19                                                           B dist {
+    20                                                               ZERO := 5,
+    21                                                               MAXPOS := 5,
+    22                                                               MAXNEG := 5,
+    23                                                               [MAXNEG:MAXPOS] := 1
+    24                                                           };   
+    25                                                       }
+    26                                               
+    27                                                       covergroup cg_A (ref bit clk);
+    28                                                           a1: coverpoint A {
+    29                                                               bins zero = {ZERO};
+    30                                                               bins maxpos = {MAXPOS};
+    31                                                               bins maxneg = {MAXNEG};
+    32                                                               bins range = default;
+    33                                                           }
+    34                                                           a2: coverpoint A {
+    35                                                               bins data0_max = (0 => MAXPOS);
+    36                                                               bins data_max_min = (MAXPOS => MAXNEG);
+    37                                                               bins data_min_max = (MAXNEG => MAXPOS);
+    38                                                           }
+    39                                                       endgroup
+    40                                               
+    41                                                       covergroup cg_B (ref bit clk);
+    42                                                           b1: coverpoint B {
+    43                                                               bins zero = {ZERO};
+    44                                                               bins maxpos = {MAXPOS};
+    45                                                               bins maxneg = {MAXNEG};
+    46                                                               bins range = default;
+    47                                                           }
+    48                                                           b2: coverpoint B {
+    49                                                               bins data0_max = (0 => MAXPOS);
+    50                                                               bins data_max_min = (MAXPOS => MAXNEG);
+    51                                                               bins data_min_max = (MAXNEG => MAXPOS);
+    52                                                           }
+    53                                                       endgroup
+    54                                               
+    55                                                       function new(ref bit clk);
+    56              1                          1                 cg_A = new(clk);
+    57              1                          1                 cg_B = new(clk);
+
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /adder_pkg/rand_input/cg_A                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint a1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint a2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/adder_pkg::rand_input::cg_A  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint a1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                           40          1          -    Covered              
+        bin maxpos                                         38          1          -    Covered              
+        bin maxneg                                         46          1          -    Covered              
+        default bin range                                  56                     -    Occurred             
+    Coverpoint a2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin data0_max                                      11          1          -    Covered              
+        bin data_max_min                                   14          1          -    Covered              
+        bin data_min_max                                   10          1          -    Covered              
+ TYPE /adder_pkg/rand_input/cg_B                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint b1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint b2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/adder_pkg::rand_input::cg_B  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     6          6          -                      
+    missing/total bins:                                     0          6          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint b1                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin zero                                           50          1          -    Covered              
+        bin maxpos                                         25          1          -    Covered              
+        bin maxneg                                         32          1          -    Covered              
+        default bin range                                  73                     -    Occurred             
+    Coverpoint b2                                     100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin data0_max                                       7          1          -    Covered              
+        bin data_max_min                                    2          1          -    Covered              
+        bin data_min_max                                    5          1          -    Covered              
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 2
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/adder_tb/#anonblk#179077330#33#4#/#ublk#179077330#33/immed__34
+                     2_adder_tb.sv(34)                  0          1
+
+Total Coverage By Instance (filtered view): 70.25%
+

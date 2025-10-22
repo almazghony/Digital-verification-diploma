@@ -1,0 +1,292 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /priority_enc_tb/dut/priority_enc_SVA_inst
+=== Design Unit: work.priority_enc_SVA
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       6         6         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/priority_enc_tb/dut/priority_enc_SVA_inst/a1
+                     1_priority_enc_SVA.sv(36)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a2
+                     1_priority_enc_SVA.sv(37)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a3
+                     1_priority_enc_SVA.sv(38)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a4
+                     1_priority_enc_SVA.sv(39)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a5
+                     1_priority_enc_SVA.sv(40)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a6
+                     1_priority_enc_SVA.sv(41)          0          1
+
+Directive Coverage:
+    Directives                       6         6         0   100.00%
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/priority_enc_tb/dut/priority_enc_SVA_inst/c1 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(43)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c2 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(44)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c3 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(45)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c4 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(46)
+                                                                                 2 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c5 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(47)
+                                                                                 4 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c6 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(48)
+                                                                                 8 Covered   
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         18        18         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /priority_enc_tb/dut/priority_enc_SVA_inst --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            D[0-3]           1           1      100.00 
+                                            Y[0-1]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                               rst           1           1      100.00 
+                                             valid           1           1      100.00 
+
+Total Node Count     =          9 
+Toggled Node Count   =          9 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (18 of 18 bins)
+
+=================================================================================
+=== Instance: /priority_enc_tb/dut
+=== Design Unit: work.priority_enc
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         7         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /priority_enc_tb/dut
+NOTE: The modification timestamp for source file '1_priority_enc.sv' has been altered since compilation.
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_priority_enc.sv
+------------------------------------IF Branch------------------------------------
+    10                                        19     Count coming in to IF
+    10              1                          2             if (rst) begin
+    14              1                         17             else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    15                                        17     Count coming in to CASE
+    16              1                          1                     4'b1000: Y <= 0;
+    17              1                          2                     4'bx100: Y <= 1;
+    18              1                          4                     4'bxx10: Y <= 2;
+    19              1                          8                     4'bxxx1: Y <= 3;
+                                               2     All False Count
+Branch totals: 5 hits of 5 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       8         8         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /priority_enc_tb/dut --
+NOTE: The modification timestamp for source file '1_priority_enc.sv' has been altered since compilation.
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_priority_enc.sv
+    1                                                module priority_enc (
+    2                                                    input clk,
+    3                                                    input rst,
+    4                                                    input [3:0] D,
+    5                                                    output reg [1:0] Y,
+    6                                                    output reg valid
+    7                                                );
+    8                                                
+    9               1                         19         always @(posedge clk) begin
+    10                                                       if (rst) begin
+    11              1                          2                 Y <= 2'b0;
+    12              1                          2                 valid <= 0;
+    13                                                       end
+    14                                                       else begin
+    15                                                           casex (D)
+    16              1                          1                     4'b1000: Y <= 0;
+    17              1                          2                     4'bx100: Y <= 1;
+    18              1                          4                     4'bxx10: Y <= 2;
+    19              1                          8                     4'bxxx1: Y <= 3;
+    20                                                           endcase
+    21              1                         17                 valid <= (~|D)? 1'b0: 1'b1;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         18        18         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /priority_enc_tb/dut --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            D[0-3]           1           1      100.00 
+                                            Y[1-0]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                               rst           1           1      100.00 
+                                             valid           1           1      100.00 
+
+Total Node Count     =          9 
+Toggled Node Count   =          9 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (18 of 18 bins)
+
+=================================================================================
+=== Instance: /priority_enc_tb
+=== Design Unit: work.priority_enc_tb
+=================================================================================
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      17        17         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /priority_enc_tb --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_priority_enc_tb.sv
+    1                                                module priority_enc_tb();
+    2                                                  logic [3:0] D;
+    3                                                  logic       clk;
+    4                                                  logic       rst;
+    5                                                  logic [1:0] Y;
+    6                                                  logic       valid;
+    7                                                
+    8                                                  priority_enc dut(clk, rst, D, Y, valid);
+    9                                                
+    10                                                 initial begin
+    11              1                          1         clk = 0;
+    12              1                          1         forever #1 clk = ~clk;
+    12              2                         39     
+    12              3                         38     
+    13                                                 end
+    14                                               
+    15                                                 integer i;
+    16                                                 initial begin
+    17                                                   //RESET test
+    18              1                          1         rst = 1;
+    19              1                          1         @(negedge clk);
+    20              1                          1         rst = 0;
+    21                                                   
+    22                                                   //TEST_1
+    23              1                          1         for(i = 0; i < 16; i = i + 1) begin
+    23              2                         16     
+    24              1                         16           D = i;
+    25              1                         16           @(negedge clk);
+    26                                                   end
+    27              1                          1         D = 0;
+    28              1                          1         @(negedge clk);
+    29                                               
+    30              1                          1         rst = 1;
+    31              1                          1         @(negedge clk);
+    32              1                          1         rst = 0;
+    33              1                          1         $stop;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         82        27        55    32.92%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /priority_enc_tb --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            D[3-0]           1           1      100.00 
+                                            Y[1-0]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                           i[31-5]           0           0        0.00 
+                                              i[4]           0           1       50.00 
+                                            i[3-0]           1           1      100.00 
+                                               rst           1           1      100.00 
+                                             valid           1           1      100.00 
+
+Total Node Count     =         41 
+Toggled Node Count   =         13 
+Untoggled Node Count =         28 
+
+Toggle Coverage      =      32.92% (27 of 82 bins)
+
+
+DIRECTIVE COVERAGE:
+--------------------------------------------------------------------------------------------
+Name                                     Design Design   Lang File(Line)      Hits Status    
+                                         Unit   UnitType                                     
+--------------------------------------------------------------------------------------------
+/priority_enc_tb/dut/priority_enc_SVA_inst/c1 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(43)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c2 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(44)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c3 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(45)
+                                                                                 1 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c4 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(46)
+                                                                                 2 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c5 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(47)
+                                                                                 4 Covered   
+/priority_enc_tb/dut/priority_enc_SVA_inst/c6 
+                                         priority_enc_SVA Verilog  SVA  1_priority_enc_SVA.sv(48)
+                                                                                 8 Covered   
+
+TOTAL DIRECTIVE COVERAGE: 100.00%  COVERS: 6
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/priority_enc_tb/dut/priority_enc_SVA_inst/a1
+                     1_priority_enc_SVA.sv(36)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a2
+                     1_priority_enc_SVA.sv(37)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a3
+                     1_priority_enc_SVA.sv(38)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a4
+                     1_priority_enc_SVA.sv(39)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a5
+                     1_priority_enc_SVA.sv(40)          0          1
+/priority_enc_tb/dut/priority_enc_SVA_inst/a6
+                     1_priority_enc_SVA.sv(41)          0          1
+
+Total Coverage By Instance (filtered view): 89.62%
+

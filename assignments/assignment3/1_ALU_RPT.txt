@@ -1,0 +1,447 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /ALU_tb/DUT
+=== Design Unit: work.ALU
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         6         6         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /ALU_tb/DUT
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_ALU.sv
+------------------------------------IF Branch------------------------------------
+    10                                        33     Count coming in to IF
+    10              1                          7     	if (rst)
+    12              1                         26     	else 
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    13                                        26     Count coming in to CASE
+    14              1                          7     			ADD: out <= operand1 + operand2;
+    15              1                          9     			SUB: out <= operand1 - operand2;
+    16              1                          5     			MULT:out <= operand1 * operand2; 
+    17              1                          5     			DIV: out <= operand1 / operand2;
+Branch totals: 4 hits of 4 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       6         6         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /ALU_tb/DUT --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_ALU.sv
+    3                                                module ALU(operand1, operand2, clk, rst, opcode, out);
+    4                                                input byte operand1, operand2;
+    5                                                input clk, rst;
+    6                                                input opcode_e opcode;
+    7                                                output byte out;
+    8                                                
+    9               1                         33     always @(posedge clk) begin
+    10                                               	if (rst)
+    11              1                          7     		out <= 0;
+    12                                               	else 
+    13                                               		case (opcode)
+    14              1                          7     			ADD: out <= operand1 + operand2;
+    15              1                          9     			SUB: out <= operand1 - operand2;
+    16              1                          5     			MULT:out <= operand1 * operand2; 
+    17              1                          5     			DIV: out <= operand1 / operand2;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         56        56         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /ALU_tb/DUT --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                               clk           1           1                              100.00 
+                                            opcode               ENUM type       Value       Count 
+                                                                       ADD           1      100.00 
+                                                                       SUB           1      100.00 
+                                                                      MULT           1      100.00 
+                                                                       DIV           1      100.00 
+                                     operand1[7-0]           1           1                              100.00 
+                                     operand2[7-0]           1           1                              100.00 
+                                          out[7-0]           1           1                              100.00 
+                                               rst           1           1                              100.00 
+
+Total Node Count     =         30 
+Toggled Node Count   =         30 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (56 of 56 bins)
+
+=================================================================================
+=== Instance: /ALU_tb
+=== Design Unit: work.ALU_tb
+=================================================================================
+
+Assertion Coverage:
+    Assertions                       1         1         0   100.00%
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/ALU_tb/#ublk#73512610#29/immed__30
+                     1_ALU_tb.sv(30)                    0          1
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         9         7         2    77.77%
+
+================================Branch Details================================
+
+Branch Coverage for instance /ALU_tb
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_ALU_tb.sv
+------------------------------------IF Branch------------------------------------
+    44                                        32     Count coming in to IF
+    44              1                          6              if (rst)
+    46              1                         26             else begin
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------CASE Branch------------------------------------
+    47                                        26     Count coming in to CASE
+    48              1                          7                     ADD: out_expected = operand1 + operand2;
+    49              1                          9                     SUB: out_expected = operand1 - operand2;
+    50              1                          5                     MULT:out_expected = operand1 * operand2;
+    51              1                          5                     DIV: out_expected = operand1 / operand2;
+                                         ***0***     All False Count
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    64                                        33     Count coming in to IF
+    64              1                    ***0***             if (out !== out_expected) begin
+    67              1                         33             end else 
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         0         1     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /ALU_tb --
+
+  File 1_ALU_tb.sv
+----------------Focused Condition View-------------------
+Line       64 Item    1  (out !== out_expected)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+              Input Term   Covered  Reason for no coverage   Hint
+             -----------  --------  -----------------------  --------------
+  (out !== out_expected)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                Non-masking condition(s)      
+ ---------  ---------  --------------------      -------------------------     
+  Row   1:          1  (out !== out_expected)_0  -                             
+  Row   2:    ***0***  (out !== out_expected)_1  -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      31        29         2    93.54%
+
+================================Statement Details================================
+
+Statement Coverage for instance /ALU_tb --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_ALU_tb.sv
+    3                                                module ALU_tb();
+    4               1                          1         transaction obj = new();
+    5                                                    byte operand1;
+    6                                                    byte operand2;
+    7                                                    opcode_e opcode;
+    8                                                    byte out;
+    9                                                    byte out_expected;
+    10                                                   bit clk, rst;
+    11                                               
+    12                                                   integer correct_count, error_count;
+    13                                               
+    14                                                   initial begin
+    15              1                          1             clk = 0;
+    16              1                          1             forever begin
+    17              1                         67                 #1 clk = ~clk;
+    17              2                         66     
+    18              1                         66                 obj.clk = clk;
+    19                                                       end
+    20                                                   end
+    21                                               
+    22                                                   ALU DUT(operand1, operand2, clk, rst, opcode, out);
+    23                                               
+    24                                                   initial begin
+    25              1                          1             correct_count = 0;
+    26              1                          1             error_count = 0;
+    27              1                          1             assert_rst();
+    28                                               
+    29              1                         32             repeat (32) begin
+    30                                                           assert(obj.randomize());
+    31              1                         32                 operand1 = obj.operand1;
+    32              1                         32                 operand2 = obj.operand2;
+    33              1                         32                 opcode   = obj.opcode;
+    34              1                         32                 rst = obj.rst;
+    35              1                         32                 @(negedge clk);
+    36              1                         32                 golden_model();
+    37              1                         32                 check_result();
+    38                                                       end
+    39              1                          1             $display("Correct count: %0d, error count: %0d", correct_count, error_count);
+    40              1                          1             $stop();
+    41                                                   end
+    42                                               
+    43                                                   task golden_model();
+    44                                                        if (rst)
+    45              1                          6                 out_expected = 0;
+    46                                                       else begin
+    47                                                           case (opcode)
+    48              1                          7                     ADD: out_expected = operand1 + operand2;
+    49              1                          9                     SUB: out_expected = operand1 - operand2;
+    50              1                          5                     MULT:out_expected = operand1 * operand2;
+    51              1                          5                     DIV: out_expected = operand1 / operand2;
+    52                                                           endcase
+    53                                                       end
+    54                                                   endtask
+    55                                               
+    56                                                   task assert_rst();
+    57              1                          1             rst = 1;
+    58              1                          1             @(negedge clk);
+    59              1                          1             check_result();
+    60              1                          1             rst = 0;
+    61                                                   endtask
+    62                                               
+    63                                                   task check_result();
+    64                                                       if (out !== out_expected) begin
+    65              1                    ***0***                 $display("*** %t : Test failed! expected %0d, got %0d ***", $time, out_expected, out);
+    66              1                    ***0***                 error_count++;
+    67                                                       end else 
+    68              1                         33                correct_count++;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        200        83       117    41.50%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /ALU_tb --
+
+                                              Node      1H->0L      0L->1H                          "Coverage"
+                                              ---------------------------------------------------------------
+                                               clk           1           1                              100.00 
+                                correct_count[0-4]           1           1                              100.00 
+                                  correct_count[5]           0           1                               50.00 
+                               correct_count[6-31]           0           0                                0.00 
+                                 error_count[0-31]           0           0                                0.00 
+                                            opcode               ENUM type       Value       Count 
+                                                                       ADD           1      100.00 
+                                                                       SUB           1      100.00 
+                                                                      MULT           1      100.00 
+                                                                       DIV           1      100.00 
+                                     operand1[0-7]           1           1                              100.00 
+                                     operand2[0-7]           1           1                              100.00 
+                                          out[0-7]           1           1                              100.00 
+                                 out_expected[0-7]           1           1                              100.00 
+                                               rst           1           1                              100.00 
+
+Total Node Count     =        102 
+Toggled Node Count   =         43 
+Untoggled Node Count =         59 
+
+Toggle Coverage      =      41.50% (83 of 200 bins)
+
+=================================================================================
+=== Instance: /ALU_pkg
+=== Design Unit: work.ALU_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      1        na        na   100.00%
+        Coverpoints/Crosses          3        na        na        na
+            Covergroup Bins          7         7         0   100.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /ALU_pkg/transaction/COVCODE                    100.00%        100          -    Covered              
+    covered/total bins:                                     7          7          -                      
+    missing/total bins:                                     0          7          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp1                                    100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp2                                    100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Cross cp3                                         100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/ALU_pkg::transaction::COVCODE  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     7          7          -                      
+    missing/total bins:                                     0          7          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp1                                    100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin max_neg                                        11          1          -    Covered              
+        bin max_pos                                        10          1          -    Covered              
+        bin zero                                            6          1          -    Covered              
+        default bin misc                                    6                     -    Occurred             
+    Coverpoint cp2                                    100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin no_div                                  7                     -    Occurred             
+        bin add_sub                                        20          1          -    Covered              
+        bin add_sub2                                        2          1          -    Covered              
+    Cross cp3                                         100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin x1                                          5          1          -    Covered              
+            bin x2                                          8          1          -    Covered              
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       1         1         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /ALU_pkg --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File 1_PKG.sv
+    1                                                package ALU_pkg;
+    2                                                    typedef enum {ADD, SUB, MULT, DIV} opcode_e;
+    3                                                    parameter byte MAX_POS = 127;
+    4                                                    parameter byte MAX_NEG = -128;
+    5                                                    parameter byte ZERO = 0;
+    6                                                    
+    7                                                    class transaction;
+    8                                                        rand opcode_e opcode;
+    9                                                        rand byte operand1;
+    10                                                       rand byte operand2;
+    11                                                       rand bit rst;
+    12                                                       bit clk;
+    13                                               
+    14                                                       constraint operands {
+    15                                                           operand1 dist {MAX_POS := 3, MAX_NEG := 3, ZERO := 3, [-128:127] :/3 };
+    16                                                       }
+    17                                                       constraint reset_c {
+    18                                                           rst dist {1 := 1, 0 := 7};
+    19                                                       }
+    20                                                       
+    21                                                       covergroup COVCODE @(posedge clk);
+    22                                                           cp1: coverpoint operand1 {
+    23                                                               bins max_neg = {-128};
+    24                                                               bins max_pos = {127};
+    25                                                               bins zero = {0};
+    26                                                               bins misc = default;
+    27                                                           }
+    28                                                           cp2: coverpoint opcode {
+    29                                                               bins add_sub = {ADD, SUB};
+    30                                                               bins add_sub2 = (ADD => SUB);
+    31                                                               illegal_bins no_div = {DIV};
+    32                                                           }
+    33                                                           cp3: cross cp1, cp2 {
+    34                                                               option.weight = 5;
+    35                                                               option.cross_auto_bin_max = 0;
+    36                                               
+    37                                                               bins x1 = binsof(cp1.max_pos) && binsof(cp2.add_sub);
+    38                                                               bins x2 = binsof(cp1.max_neg) && binsof(cp2.add_sub);
+    39                                                           }
+    40                                                       endgroup
+    41                                               
+    42                                                       function new();
+    43              1                          1                 COVCODE = new();
+
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /ALU_pkg/transaction/COVCODE                    100.00%        100          -    Covered              
+    covered/total bins:                                     7          7          -                      
+    missing/total bins:                                     0          7          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp1                                    100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+    Coverpoint cp2                                    100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+    Cross cp3                                         100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+ Covergroup instance \/ALU_pkg::transaction::COVCODE  
+                                                      100.00%        100          -    Covered              
+    covered/total bins:                                     7          7          -                      
+    missing/total bins:                                     0          7          -                      
+    % Hit:                                            100.00%        100          -                      
+    Coverpoint cp1                                    100.00%        100          -    Covered              
+        covered/total bins:                                 3          3          -                      
+        missing/total bins:                                 0          3          -                      
+        % Hit:                                        100.00%        100          -                      
+        bin max_neg                                        11          1          -    Covered              
+        bin max_pos                                        10          1          -    Covered              
+        bin zero                                            6          1          -    Covered              
+        default bin misc                                    6                     -    Occurred             
+    Coverpoint cp2                                    100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        illegal_bin no_div                                  7                     -    Occurred             
+        bin add_sub                                        20          1          -    Covered              
+        bin add_sub2                                        2          1          -    Covered              
+    Cross cp3                                         100.00%        100          -    Covered              
+        covered/total bins:                                 2          2          -                      
+        missing/total bins:                                 0          2          -                      
+        % Hit:                                        100.00%        100          -                      
+        Auto, Default and User Defined Bins:
+            bin x1                                          5          1          -    Covered              
+            bin x2                                          8          1          -    Covered              
+
+TOTAL COVERGROUP COVERAGE: 100.00%  COVERGROUP TYPES: 1
+
+ASSERTION RESULTS:
+--------------------------------------------------------------------
+Name                 File(Line)                   Failure      Pass 
+                                                  Count        Count
+--------------------------------------------------------------------
+/ALU_tb/#ublk#73512610#29/immed__30
+                     1_ALU_tb.sv(30)                    0          1
+
+Total Coverage By Instance (filtered view): 72.61%
+
