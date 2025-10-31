@@ -4,10 +4,10 @@ This repository contains my completed projects and assignments from the **Digita
 
 ## 📌 Projects
 
-### 1. ALU Verification using UVM
-- Developed a full UVM testbench for a custom **Arithmetic and Logic Unit (ALU)**.
+### 1. ALSU Verification using UVM
+- Developed a full UVM testbench for a custom **ALSU**.
 - Implemented reusable components: **sequencer**, **driver**, **monitor**, **scoreboard**, and **coverage collector**.
-- Created constrained-random sequences to exhaustively verify all ALU operations (add, subtract, AND, OR, XOR, shift, etc.).
+- Created constrained-random sequences to exhaustively verify all ALSU operations (add, subtract, AND, OR, XOR, shift, etc.).
 - Achieved **100% functional coverage** and validated correctness through scoreboard-based comparison.
 
 ### 2. SPI Multi-Slave System Verification using UVM
@@ -18,14 +18,12 @@ This repository contains my completed projects and assignments from the **Digita
 
 ### 3. Asynchronous FIFO Verification using SystemVerilog
 - Built a **SystemVerilog-based verification environment** for a dual-clock (asynchronous) FIFO.
-- Verified critical behaviors: **full/empty flags**, **gray-coded pointers**, **clock domain crossing (CDC)** safety.
 - Used **assertions (SVA)** to check protocol correctness and data integrity across clock domains.
 - Developed directed and random tests to stress FIFO under various read/write rate conditions.
 
 ## 🛠 Tools & Technologies
 - **Languages:** SystemVerilog, UVM
-- **Simulation & Debugging:** QuestaSim, VCS (Synopsys), Verdi
-- **Coverage & Analysis:** Functional coverage, code coverage (line, toggle, FSM)
+- **Simulation, Debugging, Coverage and Analysis:** QuestaSim
 - **Methodology:** UVM 1.2, constrained-random verification, coverage-driven verification (CDV)
 
 ## 📧 Contact
