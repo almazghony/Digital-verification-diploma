@@ -1,0 +1,15 @@
+slave_if.sv
+slave.sv
+slave_ref.sv
+slave_config.sv
+slave_seq_item.sv
+slave_sequence.sv
+slave_sequencer.sv
+slave_driver.sv
+slave_monitor.sv
+slave_agent.sv
+slave_coverage.sv
+slave_scoreboard.sv
+slave_env.sv
+slave_test.sv
+slave_top.sv

@@ -33,3 +33,4 @@ assign max_count = (count_out == {WIDTH{1'b1}})? 1:0;
 assign zero = (count_out == 0)? 1:0;
 
 endmodule
+
